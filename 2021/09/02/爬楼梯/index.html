@@ -5,12 +5,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Archive</title>
+    <title>爬楼梯 - 小菜狗的博客</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="YeLing,"> 
-    <meta name="description" content="好菜呜呜呜,"> 
+    <meta name="description" content="好菜呜呜呜,爬楼梯
+递归（×
+写了半天递归结果超时了。。抓狂
+不过既然f(n) = f(n - 1) + f(n - 2) 那我们就可以去计算它的通项公式
+最后是得到这样的结果 所以可以直接通过公式算出结果
+
+,"> 
     <meta name="author" content="Yeling"> 
     <link rel="alternative" href="atom.xml" title="小菜狗的博客" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -25,63 +31,88 @@
 <body class="loading">
     <span id="config-title" style="display:none">小菜狗的博客</span>
     <div id="loader"></div>
-    <div id="single" class="page">
-    <div id="top">
-        <a class="iconfont icon-left image-icon" href="javascript:history.back()"></a>
-    </div>
-    <div class="section">
-        <div class="article">
-            <div class="main">
-                <div class="content">
-                    <div class="timeline">
-                      <h2 class="timeline-title">归档: 6篇</h2><hr>
-                      
-                      
-                        
-                          <h3 class="timeline-subtitle">2021</h3>
-                        
-                        <div class="timeline-item">
-                          <time>2021-09-02</time>
-                          <a target="_self" href="/2021/09/02/%E7%88%AC%E6%A5%BC%E6%A2%AF/">爬楼梯</a>
-                        </div>
-                      
-                        
-                        <div class="timeline-item">
-                          <time>2021-09-02</time>
-                          <a target="_self" href="/2021/09/02/%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2/">最大正方形</a>
-                        </div>
-                      
-                        
-                        <div class="timeline-item">
-                          <time>2021-09-02</time>
-                          <a target="_self" href="/2021/09/02/%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%E8%BD%AC%E6%95%B4%E6%95%B0/">罗马数字转整数</a>
-                        </div>
-                      
-                        
-                        <div class="timeline-item">
-                          <time>2021-09-02</time>
-                          <a target="_self" href="/2021/09/02/%E5%A4%AA%E5%B9%B3%E6%B4%8B%E5%A4%A7%E8%A5%BF%E6%B4%8B%E6%B0%B4%E6%B5%81%E9%97%AE%E9%A2%98/">太平洋大西洋水流问题</a>
-                        </div>
-                      
-                        
-                        <div class="timeline-item">
-                          <time>2021-09-02</time>
-                          <a target="_self" href="/2021/09/02/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/">中序遍历</a>
-                        </div>
-                      
-                        
-                        <div class="timeline-item">
-                          <time>2021-08-12</time>
-                          <a target="_self" href="/2021/08/12/hello-world/">Hello World</a>
-                        </div>
-                      
-                    </div>
-                </div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">爬楼梯</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
             </div>
+            <div id="qr"></div>
         </div>
     </div>
+    <div class="scrollbar"></div>
 </div>
 
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">爬楼梯</h1>
+        <div class="stuff">
+            <span>九月 02, 2021</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>爬楼梯</p>
+<p>递归（×</p>
+<p>写了半天递归结果超时了。。抓狂</p>
+<p>不过既然f(n) = f(n - 1) + f(n - 2) 那我们就可以去计算它的通项公式</p>
+<p>最后是得到这样的结果 所以可以直接通过公式算出结果</p>
+<p><img src="/2021/09/02/%E7%88%AC%E6%A5%BC%E6%A2%AF/1.png"></p>
+<p>动态规划</p>
+<p>我们需要一个数组来储存所有的结果</p>
+<p>所以</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">climbStairs</span>(<span class="params">self,n</span>):</span></span><br><span class="line">        store = []</span><br><span class="line">        store.append(<span class="number">1</span>)</span><br><span class="line">        store.append(<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,n+<span class="number">1</span>):</span><br><span class="line">            store.append(store[x-<span class="number">1</span>] + store[x-<span class="number">2</span>])</span><br><span class="line">        <span class="keyword">return</span> store[n]</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/02/%E7%88%AC%E6%A5%BC%E6%A2%AF/11.png"></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://link.hhtjim.com/163/1412645076.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='https://link.hhtjim.com/163/1412645076.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+				
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
 </body>
 
 <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>

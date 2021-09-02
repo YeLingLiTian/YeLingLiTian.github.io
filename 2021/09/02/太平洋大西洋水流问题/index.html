@@ -5,12 +5,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Hello World - 小菜狗的博客</title>
+    <title>太平洋大西洋水流问题 - 小菜狗的博客</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="YeLing,"> 
-    <meta name="description" content="好菜呜呜呜,Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any pr,"> 
+    <meta name="description" content="好菜呜呜呜,太平洋大西洋水流问题
+这道题本来打算每一个方格都遍历一遍然后依次查找比自己小的相邻数并标记然后不断重复 后来觉得太麻烦 于是想到从海往上 从小到大的话可以省去许多重复的步骤 建立两个数组 标记水流都,"> 
     <meta name="author" content="Yeling"> 
     <link rel="alternative" href="atom.xml" title="小菜狗的博客" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -30,7 +31,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
-    <h3 class="subtitle">Hello World</h3>
+    <h3 class="subtitle">太平洋大西洋水流问题</h3>
     <div class="social">
         <div>
             <div class="share">
@@ -45,26 +46,18 @@
     <div class="section">
         <div class="article">
     <div class='main'>
-        <h1 class="title">Hello World</h1>
+        <h1 class="title">太平洋大西洋水流问题</h1>
         <div class="stuff">
-            <span>八月 12, 2021</span>
+            <span>九月 02, 2021</span>
             
 
         </div>
         <div class="content markdown">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+            <p>太平洋大西洋水流问题</p>
+<p>这道题本来打算每一个方格都遍历一遍然后依次查找比自己小的相邻数并标记然后不断重复 后来觉得太麻烦 于是想到从海往上 从小到大的话可以省去许多重复的步骤 建立两个数组 标记水流都能到达的地方为true 然后两个数组都为true的地方便是结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pacificAtlantic</span>(<span class="params">self, heights</span>):</span></span><br><span class="line">        m=<span class="built_in">len</span>(heights)</span><br><span class="line">        n=<span class="built_in">len</span>(heights[<span class="number">0</span>])</span><br><span class="line">        ocean_one=[[<span class="literal">False</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m) ]</span><br><span class="line">        ocean_two=[[<span class="literal">False</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m) ]</span><br><span class="line">        res=[]</span><br><span class="line">        directions = [[<span class="number">0</span>,<span class="number">1</span>], [<span class="number">0</span>,-<span class="number">1</span>], [<span class="number">1</span>, <span class="number">0</span>], [-<span class="number">1</span>,<span class="number">0</span>]]</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dfs</span>(<span class="params">martix,i,j</span>):</span></span><br><span class="line">            martix[i][j]=<span class="literal">True</span></span><br><span class="line">            <span class="keyword">for</span> direction <span class="keyword">in</span> directions:</span><br><span class="line">                x=i+direction[<span class="number">0</span>]</span><br><span class="line">                y=j+direction[<span class="number">1</span>]</span><br><span class="line">                <span class="keyword">if</span> <span class="number">0</span>&lt;=x&lt;m <span class="keyword">and</span> <span class="number">0</span>&lt;=y&lt;n <span class="keyword">and</span> heights[i][j]&lt;=heights[x][y] <span class="keyword">and</span> <span class="keyword">not</span> martix[x][y]:</span><br><span class="line">                    dfs(martix,x,y)</span><br><span class="line">        <span class="keyword">for</span> index <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">            dfs(ocean_one,index,<span class="number">0</span>) </span><br><span class="line">            dfs(ocean_two,index,n-<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> index <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            dfs(ocean_one,<span class="number">0</span>,index)</span><br><span class="line">            dfs(ocean_two,m-<span class="number">1</span>,index)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                <span class="keyword">if</span> ocean_one[i][j] <span class="keyword">and</span> ocean_two[i][j]:</span><br><span class="line">                    res.append([i,j])</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p><img src="/2021/09/02/%E5%A4%AA%E5%B9%B3%E6%B4%8B%E5%A4%A7%E8%A5%BF%E6%B4%8B%E6%B0%B4%E6%B5%81%E9%97%AE%E9%A2%98/3.png"></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
@@ -100,7 +93,7 @@
     </div>
     
         <div class='side'>
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>	
+				
         </div>
     
 </div>
