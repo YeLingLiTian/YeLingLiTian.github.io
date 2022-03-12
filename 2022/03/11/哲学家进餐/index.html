@@ -5,15 +5,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>最大正方形 - 小菜狗的博客</title>
+    <title> - 小菜狗的博客</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="YeLing,"> 
-    <meta name="description" content="好菜呜呜呜,最大正方形
-这道题首先看完题后我想的是可以创造出一个小于这个矩形的正方形然后依次遍历每个可能的位置 但是后来感觉太麻烦 于是 发现 这道题可以用dp来解决 如果以右下角为起点
-那么就可以发现公式
-1,"> 
+    <meta name="description" content="好菜呜呜呜,哲学家进餐
+问题就在于如何避免死锁问题
+那么我们至多允许四个哲学家同时去拿左边的筷子，最终保证至少有一个科学家能进餐，并且用完之后放下筷子，从而使其他的哲学家能够拿到筷子。
+123456789101,"> 
     <meta name="author" content="Yeling"> 
     <link rel="alternative" href="atom.xml" title="小菜狗的博客" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -33,7 +33,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
-    <h3 class="subtitle">最大正方形</h3>
+    <h3 class="subtitle"></h3>
     <div class="social">
         <div>
             <div class="share">
@@ -48,27 +48,19 @@
     <div class="section">
         <div class="article">
     <div class='main'>
-        <h1 class="title">最大正方形</h1>
+        <h1 class="title"></h1>
         <div class="stuff">
-            <span>九月 02, 2021</span>
+            <span>三月 11, 2022</span>
             
 
         </div>
         <div class="content markdown">
-            <p>最大正方形</p>
-<p>这道题首先看完题后我想的是可以创造出一个小于这个矩形的正方形然后依次遍历每个可能的位置 但是后来感觉太麻烦 于是 发现 这道题可以用dp来解决 如果以右下角为起点</p>
-<p>那么就可以发现公式</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pos(i,j)=<span class="built_in">min</span>(pos(i−<span class="number">1</span>,j),pos(i−<span class="number">1</span>,j−<span class="number">1</span>),pos(i,j−<span class="number">1</span>))+<span class="number">1</span></span><br></pre></td></tr></table></figure>
+            <p>哲学家进餐</p>
+<p>问题就在于如何避免死锁问题</p>
+<p>那么我们至多允许四个哲学家同时去拿左边的筷子，最终保证至少有一个科学家能进餐，并且用完之后放下筷子，从而使其他的哲学家能够拿到筷子。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Lock, Semaphore</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DiningPhilosophers</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.Limit = Semaphore(<span class="number">4</span>) <span class="comment"># 限制最多4个人就餐</span></span><br><span class="line">        self.ForkLocks = [Lock() <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)] <span class="comment"># 叉子锁</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wantsToEat</span>(<span class="params">self,</span></span></span><br><span class="line"><span class="params"><span class="function">                   philosopher: <span class="built_in">int</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                   pickLeftFork: <span class="string">&#x27;Callable[[], None]&#x27;</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                   pickRightFork: <span class="string">&#x27;Callable[[], None]&#x27;</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                   eat: <span class="string">&#x27;Callable[[], None]&#x27;</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                   putLeftFork: <span class="string">&#x27;Callable[[], None]&#x27;</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                   putRightFork: <span class="string">&#x27;Callable[[], None]&#x27;</span></span>) -&gt; <span class="literal">None</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 左右叉子的编号</span></span><br><span class="line">        right_fork = philosopher</span><br><span class="line">        left_fork = (philosopher + <span class="number">1</span>) % <span class="number">5</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 进入吃饭</span></span><br><span class="line">        self.Limit.acquire()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 拿起叉子</span></span><br><span class="line">        self.ForkLocks[right_fork].acquire()</span><br><span class="line">        self.ForkLocks[left_fork].acquire()</span><br><span class="line">        </span><br><span class="line">        pickLeftFork()</span><br><span class="line">        pickRightFork()</span><br><span class="line">        eat()</span><br><span class="line">        putLeftFork()</span><br><span class="line">        putRightFork()</span><br><span class="line"></span><br><span class="line">        <span class="comment">#放下叉子</span></span><br><span class="line">        self.ForkLocks[right_fork].release()</span><br><span class="line">        self.ForkLocks[left_fork].release()</span><br><span class="line"></span><br><span class="line">        <span class="comment">#退出吃饭</span></span><br><span class="line">        self.Limit.release()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>每一个方格的最大正方形边长数等于其左或上或右相邻方格其中的最小值+1 而其中情况可以分三种讨论</p>
-<p>若方格处于左边界和上边界 那么其等于本身的数</p>
-<p>若方格为0 则最大边长数直接为0</p>
-<p>那么我们来写代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maximalSquare</span>(<span class="params">self, matrix</span>):</span></span><br><span class="line">        x = <span class="built_in">len</span>(matrix)</span><br><span class="line">        y = <span class="built_in">len</span>(matrix[<span class="number">0</span>])</span><br><span class="line">        max_side = <span class="number">0</span></span><br><span class="line">        dp_square = [[<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(y)] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(x)]</span><br><span class="line">        <span class="keyword">for</span> xx <span class="keyword">in</span> <span class="built_in">range</span>(x):</span><br><span class="line">            <span class="keyword">for</span> yy <span class="keyword">in</span> <span class="built_in">range</span>(y):</span><br><span class="line">                <span class="keyword">if</span> (matrix[xx][yy] == <span class="string">&#x27;1&#x27;</span>):</span><br><span class="line">                    <span class="keyword">if</span> (xx == <span class="number">0</span> <span class="keyword">or</span> yy == <span class="number">0</span>):</span><br><span class="line">                        dp_square[xx][yy] = <span class="number">1</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        dp_square[xx][yy] = <span class="built_in">min</span>(dp_square[xx - <span class="number">1</span>][yy], dp_square[xx][yy - <span class="number">1</span>],dp_square[xx - <span class="number">1</span>][yy - <span class="number">1</span>]) + <span class="number">1</span></span><br><span class="line">                    max_side = <span class="built_in">max</span>(<span class="number">0</span>,dp_square[xx][yy], max_side)</span><br><span class="line">        result = max_side * max_side</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-
-
-
-<p><img src="/2021/09/02/%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2/5.png"></p>
+<p><img src="/2022/03/11/%E5%93%B2%E5%AD%A6%E5%AE%B6%E8%BF%9B%E9%A4%90/7.png"></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
