@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title> - 小菜狗的博客</title>
+    <title>克隆图 - 小菜狗的博客</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
@@ -32,7 +32,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
-    <h3 class="subtitle"></h3>
+    <h3 class="subtitle">克隆图</h3>
     <div class="social">
         <div>
             <div class="share">
@@ -47,9 +47,9 @@
     <div class="section">
         <div class="article">
     <div class='main'>
-        <h1 class="title"></h1>
+        <h1 class="title">克隆图</h1>
         <div class="stuff">
-            <span>三月 12, 2022</span>
+            <span>三月 06, 2022</span>
             
 
         </div>
@@ -58,7 +58,7 @@
 <p>这道题我们需要用深度优先搜索来通过给定节点进行图的遍历，然后再拿一个dict去记录访问过的点就可以了</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    visited = &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cloneGraph</span>(<span class="params">self, node: <span class="string">&#x27;Node&#x27;</span></span>) -&gt; &#x27;Node&#x27;:</span></span><br><span class="line">        <span class="keyword">if</span> node == <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> node</span><br><span class="line">        <span class="comment">#如果节点为空直接返回</span></span><br><span class="line">        <span class="keyword">if</span> node <span class="keyword">in</span> self.visited:</span><br><span class="line">            <span class="keyword">return</span> self.visited[node]</span><br><span class="line">        <span class="comment">#如果节点被访问则返回被访问的节点</span></span><br><span class="line">        cloneNode = Node(node.val)</span><br><span class="line">        <span class="comment">#储存已经访问过的节点</span></span><br><span class="line">        self.visited[node] = cloneNode</span><br><span class="line">        <span class="comment">#更新克隆节点的邻居</span></span><br><span class="line">        <span class="keyword">for</span> neighbor <span class="keyword">in</span> node.neighbors:</span><br><span class="line">            cloneNode.neighbors.append(self.cloneGraph(neighbor))</span><br><span class="line">        <span class="keyword">return</span> cloneNode</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><img src="/2022/03/12/%E5%85%8B%E9%9A%86%E5%9B%BE/9.png"></p>
+<p><img src="/9.png"></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">

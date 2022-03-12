@@ -5,15 +5,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title> - 小菜狗的博客</title>
+    <title>天际线问题 - 小菜狗的博客</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="YeLing,"> 
-    <meta name="description" content="好菜呜呜呜,哲学家进餐
-问题就在于如何避免死锁问题
-那么我们至多允许四个哲学家同时去拿左边的筷子，最终保证至少有一个科学家能进餐，并且用完之后放下筷子，从而使其他的哲学家能够拿到筷子。
-123456789101,"> 
+    <meta name="description" content="好菜呜呜呜,天际线问题
+构造一个优先队列 把左边缘和对应高度，右边缘和对应高度存储到一个数组中 用左边缘高度为负来区分，依次遍历数组，若为左边缘入队列，若为右边缘出队列，每次入队列和出队列都进行判断，若入队列高,"> 
     <meta name="author" content="Yeling"> 
     <link rel="alternative" href="atom.xml" title="小菜狗的博客" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -33,7 +31,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
-    <h3 class="subtitle"></h3>
+    <h3 class="subtitle">天际线问题</h3>
     <div class="social">
         <div>
             <div class="share">
@@ -48,19 +46,40 @@
     <div class="section">
         <div class="article">
     <div class='main'>
-        <h1 class="title"></h1>
+        <h1 class="title">天际线问题</h1>
         <div class="stuff">
-            <span>三月 11, 2022</span>
+            <span>三月 04, 2022</span>
             
 
         </div>
         <div class="content markdown">
-            <p>哲学家进餐</p>
-<p>问题就在于如何避免死锁问题</p>
-<p>那么我们至多允许四个哲学家同时去拿左边的筷子，最终保证至少有一个科学家能进餐，并且用完之后放下筷子，从而使其他的哲学家能够拿到筷子。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Lock, Semaphore</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DiningPhilosophers</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.Limit = Semaphore(<span class="number">4</span>) <span class="comment"># 限制最多4个人就餐</span></span><br><span class="line">        self.ForkLocks = [Lock() <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)] <span class="comment"># 叉子锁</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wantsToEat</span>(<span class="params">self,</span></span></span><br><span class="line"><span class="params"><span class="function">                   philosopher: <span class="built_in">int</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                   pickLeftFork: <span class="string">&#x27;Callable[[], None]&#x27;</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                   pickRightFork: <span class="string">&#x27;Callable[[], None]&#x27;</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                   eat: <span class="string">&#x27;Callable[[], None]&#x27;</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                   putLeftFork: <span class="string">&#x27;Callable[[], None]&#x27;</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                   putRightFork: <span class="string">&#x27;Callable[[], None]&#x27;</span></span>) -&gt; <span class="literal">None</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 左右叉子的编号</span></span><br><span class="line">        right_fork = philosopher</span><br><span class="line">        left_fork = (philosopher + <span class="number">1</span>) % <span class="number">5</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 进入吃饭</span></span><br><span class="line">        self.Limit.acquire()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 拿起叉子</span></span><br><span class="line">        self.ForkLocks[right_fork].acquire()</span><br><span class="line">        self.ForkLocks[left_fork].acquire()</span><br><span class="line">        </span><br><span class="line">        pickLeftFork()</span><br><span class="line">        pickRightFork()</span><br><span class="line">        eat()</span><br><span class="line">        putLeftFork()</span><br><span class="line">        putRightFork()</span><br><span class="line"></span><br><span class="line">        <span class="comment">#放下叉子</span></span><br><span class="line">        self.ForkLocks[right_fork].release()</span><br><span class="line">        self.ForkLocks[left_fork].release()</span><br><span class="line"></span><br><span class="line">        <span class="comment">#退出吃饭</span></span><br><span class="line">        self.Limit.release()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+            <p>天际线问题</p>
+<p>构造一个优先队列 把左边缘和对应高度，右边缘和对应高度存储到一个数组中 用左边缘高度为负来区分，依次遍历数组，若为左边缘入队列，若为右边缘出队列，每次入队列和出队列都进行判断，若入队列高度为最高则加入答案，若出队列高度发生改变（把出队列后最高）也加入答案即可。</p>
+<pre><code>class Solution:
+    def getSkyline(self, buildings: List[List[int]]) -&gt; List[List[int]]:
+        all = []
+        for l, r, h in buildings:
+            all.append([l,-h])
+            all.append([r,h])
+        all.sort()
 
-<p><img src="/2022/03/11/%E5%93%B2%E5%AD%A6%E5%AE%B6%E8%BF%9B%E9%A4%90/7.png"></p>
+        ans = []
+        pq = [0]
+        for x, h in all:
+            if h &lt; 0:
+                tmp = pq[0]
+                heappush(pq, h)
+                if tmp != pq[0]:
+                    ans.append([x, -h])
+            else:
+                tmp = pq[0]
+                pq.remove(-h)
+                heapify(pq)
+                if tmp != pq[0]:
+                    ans.append([x, -pq[0]])
+        return ans
+</code></pre>
+<p><img src="/6.png"></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
